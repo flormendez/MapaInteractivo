@@ -8,15 +8,24 @@ marcadorModulo = (function() {
   // Crea un marcador y lo muestra en el mapa
   function mostrarMiMarcador(ubicacion) {
     miMarcador = new google.maps.Marker({
-      map: mapa,
       position: ubicacion,
-      animation: "bounce"
+      map: mapa,
+      animation: google.maps.Animation.DROP
     });
-    /* Completar la función mostrarMiMarcador() para crear un marcador
+    miMarcador.addListener("click", toggleBounce);
+  }
+  function toggleBounce() {
+    if (miMarcador.getAnimation() !== null) {
+      miMarcador.setAnimation(null);
+    } else {
+      miMarcador.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  }
+
+  /* Completar la función mostrarMiMarcador() para crear un marcador
         en la posición pasada por parámetro y mostrarlo en el mapa.
         Este marcador debe tener un título, una animación.
         El marcador que vas a crear debe asignarse a la variable miMarcador */
-  }
 
   // Agrega la dirección del marcador en la lista de Lugares Intermedios
   function agregarDireccionMarcador(marcador) {
@@ -253,7 +262,7 @@ marcadorModulo = (function() {
     if (marcadorModulo.existeMiMarcador()) {
       var miPosicion = marcadorModulo.damePosicion();
     } else {
-      miPosicion = posicionCentral;
+      miPosicion = centro;
     }
     lugaresModulo.buscarCerca(miPosicion);
     // cambio el centro del mapa a miPosicion

@@ -1,4 +1,5 @@
-var mapa; // Mapa que vamos a modificar
+// Mapa que vamos a modificar
+var mapa;
 var centro = {
   lat: -34.592868,
   lng: -58.4199791
