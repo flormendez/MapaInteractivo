@@ -103,25 +103,25 @@ direccionesModulo = (function() {
   // Calcula la ruta entre los puntos Desde y Hasta con los puntosIntermedios
   // dependiendo de la formaDeIr que puede ser Caminando, Auto o Bus/Subterraneo/Tren
   function calcularYMostrarRutas() {
-    // var waypoints = [];
-    // document
-    //   .getElementById("puntosIntermedios")
-    //   .childNodes.forEach(function(node) {
-    //     waypoints.push({
-    //       location: node.innerHTML,
-    //       stopover: false
-    //     });
-    //   });
-    // waypoints.splice(0, 1);
+    var waypoints = [];
+    document
+      .getElementById("puntosIntermedios")
+      .childNodes.forEach(function(node) {
+        waypoints.push({
+          location: node.innerHTML,
+          stopover: false
+        });
+      });
+    waypoints.splice(0, 1);
     var options = {
       origin: document.getElementById("desde").value,
       destination: document.getElementById("hasta").value,
-      travelMode: document.getElementById("comoIr").value
-      // waypoints: waypoints,
+      travelMode: document.getElementById("comoIr").value,
+      waypoints: waypoints
     };
-    servicioDirecciones.route(options, function(result, status) {
+    servicioDirecciones.route(options, function(response, status) {
       if (status == "OK") {
-        mostradorDirecciones.setDirections(result);
+        mostradorDirecciones.setDirections(response);
       }
     });
   }

@@ -4,10 +4,6 @@ lugaresModulo = (function() {
   // Completa las direcciones ingresadas por el usuario a y establece los límites
   // con un círculo cuyo radio es de 20000 metros.
   function autocompletar() {
-    /* Completar la función autocompletar(): autocompleta los 4 campos de texto de la
-        página (las direcciones ingresables por el usuario).
-        Para esto creá un círculo con radio de 20000 metros y usalo para fijar
-        los límites de la búsqueda de dirección. El círculo no se debe ver en el mapa. */
     var input = [
       document.getElementById("direccion"),
       document.getElementById("desde"),
